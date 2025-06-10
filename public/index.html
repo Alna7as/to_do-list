@@ -8,7 +8,8 @@
     body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; }
     #login, #register, #app { display: none; }
     ul { list-style-type: none; padding: 0; }
-    li { padding: 8px 0; display: flex; justify-content: space-between; }
+    li { padding: 8px 0; display: flex; align-items: center; }
+    li span { flex-grow: 1; margin-left: 8px; }
   </style>
 </head>
 <body>
@@ -35,6 +36,7 @@
     <h2>Your Tasks</h2>
     <input type="text" id="new-task" placeholder="New task">
     <button onclick="addTask()">Add</button>
+    <p><small>Double-click a task to edit. Check the box to mark as done.</small></p>
     <ul id="tasks"></ul>
   </div>
 

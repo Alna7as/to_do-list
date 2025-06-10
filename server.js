@@ -82,6 +82,24 @@ app.delete('/tasks/:id', ensureAuth, (req, res) => {
   res.json({ success: true });
 });
 
+app.patch('/tasks/:id', ensureAuth, (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const { text, done } = req.body;
+  const user = data.users[req.session.user];
+  const task = user.tasks.find(t => t.id === id);
+  if (!task) {
+    return res.status(404).json({ error: 'Task not found' });
+  }
+  if (typeof text === 'string') {
+    task.text = text;
+  }
+  if (typeof done === 'boolean') {
+    task.done = done;
+  }
+  saveData();
+  res.json(task);
+});
+
 app.post('/logout', (req, res) => {
   req.session.destroy(() => {
     res.json({ success: true });

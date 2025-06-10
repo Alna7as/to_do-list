@@ -59,13 +59,43 @@ async function loadTasks() {
   ul.innerHTML = '';
   tasks.forEach(task => {
     const li = document.createElement('li');
-    li.textContent = task.text;
+
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.checked = task.done;
+    cb.onchange = async () => {
+      await fetch('/tasks/' + task.id, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ done: cb.checked })
+      });
+      loadTasks();
+    };
+
+    const span = document.createElement('span');
+    span.textContent = task.text;
+    if (task.done) span.style.textDecoration = 'line-through';
+    span.ondblclick = async () => {
+      const newText = prompt('Edit task', task.text);
+      if (newText) {
+        await fetch('/tasks/' + task.id, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: newText })
+        });
+        loadTasks();
+      }
+    };
+
     const btn = document.createElement('button');
     btn.textContent = 'Delete';
     btn.onclick = async () => {
       await fetch('/tasks/' + task.id, { method: 'DELETE' });
       loadTasks();
     };
+
+    li.appendChild(cb);
+    li.appendChild(span);
     li.appendChild(btn);
     ul.appendChild(li);
   });

@@ -1,6 +1,6 @@
 # To-Do App with Login
 
-This is a simple Node.js application that provides a to-do list with user registration and login. User data and tasks are stored in a JSON file on the server.
+This is a simple Node.js application that provides a to-do list with user registration and login. User data and tasks are stored in a JSON file on the server. Requires Node.js 18 or later.
 
 ## Setup
 
@@ -19,5 +19,6 @@ This is a simple Node.js application that provides a to-do list with user regist
 ## Features
 
 - Register and log in with a username and password.
-- Add and delete tasks that are saved for each user.
+- Add, edit, and delete tasks that are saved for each user.
+- Mark tasks as done by checking the box.
 - Logout to end the session.
