@@ -1,20 +1,20 @@
 <?php
 // معلومات الاتصال بقاعدة البيانات
-define('DB_HOST', 'sql304.infinityfree.com');
-define('DB_NAME', 'if0_39175585_todo_list_f');
-define('DB_USER', 'if0_39175585');
-define('DB_PASS', 'NmGNKsbxl50Ir');
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'todo_list_f');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 
 
 // إعدادات التطبيق
 define('SITE_NAME', 'قائمة المهام');
-define('SITE_URL', 'https://yo-do.42web.io');
+define('SITE_URL', 'http://localhost/todo_list');
 
 // دالة الاتصال بقاعدة البيانات
 function getDBConnection() {
     try {
         $conn = new PDO(
-            "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8mb4",
+            "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
             DB_USER,
             DB_PASS,
             [
