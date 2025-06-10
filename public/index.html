@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do App</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; }
+    #login, #register, #app { display: none; }
+    ul { list-style-type: none; padding: 0; }
+    li { padding: 8px 0; display: flex; justify-content: space-between; }
+  </style>
+</head>
+<body>
+  <h1>To-Do App</h1>
+
+  <div id="login">
+    <h2>Login</h2>
+    <input type="text" id="login-username" placeholder="Username"><br>
+    <input type="password" id="login-password" placeholder="Password"><br>
+    <button onclick="login()">Login</button>
+    <p>Or <a href="#" onclick="showRegister()">register</a></p>
+  </div>
+
+  <div id="register">
+    <h2>Register</h2>
+    <input type="text" id="register-username" placeholder="Username"><br>
+    <input type="password" id="register-password" placeholder="Password"><br>
+    <button onclick="register()">Register</button>
+    <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+  </div>
+
+  <div id="app">
+    <button onclick="logout()">Logout</button>
+    <h2>Your Tasks</h2>
+    <input type="text" id="new-task" placeholder="New task">
+    <button onclick="addTask()">Add</button>
+    <ul id="tasks"></ul>
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>
